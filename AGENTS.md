@@ -59,6 +59,20 @@
 4. **拒絕發散：** 一次 commit 只解決一件事
 5. **dbt 測試必寫：** 每個 Silver/Gold model 至少一條 not_null + unique test
 6. **完成的定義（DoD）：** `dbt run` + `dbt test` 全綠才算 done
+7. **工具隔離原則（A + B 組合）：**
+   - **兩層分離**：開發者工具（`uv`、`git`）可一次性安裝至系統層，但必須記錄在 AGENTS.md；專案套件（`dbt`、`duckdb`、`faker` 等）只能透過 `uv add` 安裝進 `.venv`，不例外
+   - **`uv run` 唯一入口**：所有執行指令一律加 `uv run` 前綴（`uv run dbt run`、`uv run python ...`），確保即使未 activate 也不會污染全域環境
+   - **可驗證**：執行 `uv run python -c "import sys; print(sys.prefix)"` 輸出應包含 `.venv`，否則視為環境異常
+8. **做中學原則：** 每引入一個新工具或概念（如 uv、dbt、DuckDB），必須在操作前用一句話說明「這個指令做什麼、為什麼這樣做」，讓使用者跟上學習脈絡
+
+---
+
+## 已安裝的開發者工具（系統層）
+
+| 工具 | 安裝方式 | 用途 |
+|---|---|---|
+| `uv` | 待安裝 | Python 套件管理與虛擬環境 |
+| `git` | 系統內建 | 版本控制 |
 
 ---
 
