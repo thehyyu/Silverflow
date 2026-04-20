@@ -1,0 +1,36 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# uv
+.uv/
+
+# DuckDB
+*.duckdb
+*.duckdb.wal
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Data files (原始資料不進 repo)
+data/bronze/
+data/silver/
+data/gold/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 環境變數
+.env
