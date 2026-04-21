@@ -71,7 +71,7 @@
 
 | 工具 | 安裝方式 | 用途 |
 |---|---|---|
-| `uv` | 待安裝 | Python 套件管理與虛擬環境 |
+| `uv` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | Python 套件管理與虛擬環境 |
 | `git` | 系統內建 | 版本控制 |
 
 ---
@@ -195,10 +195,11 @@ silverflow/
 
 ## 當前狀態
 
-**最後更新：** 2026-04-20
-**目前進度：** Branch 0 準備中
+**最後更新：** 2026-04-21
+**目前進度：** Branch 0 完成 ✅，Branch 0.5 準備中
 
 ### 下一步
-- 建立 `pyproject.toml` 並用 `uv` 安裝依賴
-- 建立目錄結構
-- 確認 dbt-duckdb 設定可跑通
+- 撰寫 `ingestion/generate_health.py`，生成 5 筆假健康資料到 `data/bronze/`
+- 建立 DuckDB，`COPY` 資料進 `raw_health_records`
+- 建立第一個 dbt model：`stg_health_records`
+- 用 Datasette 瀏覽驗證
