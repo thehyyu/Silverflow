@@ -190,28 +190,29 @@ silverflow/
 **定位：** DE 架構為核心，同時展示 DA/DS 分析能力（統計檢定 + 視覺化）
 
 **Success criteria：**
-- [ ] [GREEN] Datasette 可瀏覽所有 Bronze/Silver/Gold tables
-- [ ] [GREEN] README 說清楚：架構圖、執行步驟、面試故事
+- [x] [GREEN] Datasette 可瀏覽所有 Bronze/Silver/Gold tables
+- [x] [GREEN] README 說清楚：架構圖、執行步驟、面試故事
 
 **Notebook — 視覺化（Matplotlib / Seaborn）**
-- [ ] [GREEN] 長照缺口長條圖：各縣市長照床位缺口排名
-- [ ] [GREEN] 健康趨勢折線圖：各族群（65+、中年、對照）週平均 HRV、睡眠
-- [ ] [GREEN] 跨域散點圖：各縣市長照資源密度 vs 平均壓力指數
+- [x] [GREEN] 長照缺口長條圖：各縣市長照床位缺口排名
+- [x] [GREEN] 健康趨勢折線圖：各族群（65+、中年、對照）週平均 HRV、睡眠
+- [x] [GREEN] 跨域散點圖：各縣市長照資源密度 vs 平均壓力指數
 
 **Notebook — 統計檢定（DA/DS 基本功）**
-- [ ] [GREEN] t-test：65+ 族群 vs 中年族群的 HRV 差異是否顯著
-- [ ] [GREEN] 相關性分析：各縣市長照資源 vs 健康指標（Pearson / Spearman correlation）
-- [ ] [GREEN] 每個檢定附上解讀：p-value 意義、結論用一句話說清楚
+- [x] [GREEN] t-test：65+ 族群 vs 中年族群的 HRV 差異是否顯著（p < 0.001）
+- [x] [GREEN] 相關性分析：各縣市長照資源 vs 健康指標（Pearson / Spearman correlation）
+- [x] [GREEN] 每個檢定附上解讀：p-value 意義、結論用一句話說清楚
 
 ---
 
 ## 當前狀態
 
 **最後更新：** 2026-04-22
-**目前進度：** Branch 3 完成 ✅，Branch 4 準備中
+**目前進度：** Branch 4 完成 ✅ — 專案全部完工
 
-### 下一步
-- Branch 4：Datasette 可瀏覽所有 Bronze/Silver/Gold tables
-- Branch 4：Notebook 視覺化（長條圖、折線圖、散點圖）
-- Branch 4：統計檢定（t-test、相關性分析）
-- Branch 4：README 架構圖 + 面試故事
+### 專案完成
+所有 Branch（0 → 0.5 → 1 → 2 → 3 → 4）全部完成。
+- dbt test 33/33 全綠
+- Datasette 可瀏覽 8 張 table
+- Notebook 含 5 張視覺化 + t-test + 相關性分析
+- README 含架構圖、執行步驟、面試故事

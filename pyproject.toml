@@ -9,4 +9,7 @@ dependencies = [
     "pandas",
     "jupyter",
     "datasette",
+    "matplotlib>=3.10.8",
+    "seaborn>=0.13.2",
+    "scipy>=1.17.1",
 ]
