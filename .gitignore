@@ -13,6 +13,7 @@ build/
 # DuckDB
 *.duckdb
 *.duckdb.wal
+*_view.sqlite
 
 # dbt
 dbt/target/
@@ -34,3 +35,4 @@ Thumbs.db
 
 # 環境變數
 .env
+dbt/.user.yml

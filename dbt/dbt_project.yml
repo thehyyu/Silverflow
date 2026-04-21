@@ -1,0 +1,14 @@
+name: silverflow
+version: "0.1.0"
+profile: silverflow
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  silverflow:
+    silver:
+      +materialized: table
+    gold:
+      +materialized: table

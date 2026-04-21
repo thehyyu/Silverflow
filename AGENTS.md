@@ -137,10 +137,10 @@ silverflow/
 **Input：** Branch 0 所有項目完成
 **Output：** Datasette 頁面可見 Silver table 資料
 **Success criteria：**
-- [ ] `generate_health.py` 輸出 5 筆 CSV 到 `data/bronze/`
-- [ ] DuckDB 成功 `COPY` 進 `raw_health_records`
-- [ ] `dbt run --select stg_health_records` 成功
-- [ ] `datasette silverflow.duckdb` 啟動，瀏覽器可見資料
+- [x] `generate_health.py` 輸出 5 筆 CSV 到 `data/bronze/`
+- [x] DuckDB 成功 `COPY` 進 `raw_health_records`
+- [x] `dbt run --select stg_health_records` 成功
+- [x] Datasette 啟動，瀏覽器可見資料（透過 `export_to_sqlite.py` 轉 SQLite）
 
 ---
 
@@ -196,10 +196,9 @@ silverflow/
 ## 當前狀態
 
 **最後更新：** 2026-04-21
-**目前進度：** Branch 0 完成 ✅，Branch 0.5 準備中
+**目前進度：** Branch 0.5 完成 ✅，Branch 1 準備中
 
 ### 下一步
-- 撰寫 `ingestion/generate_health.py`，生成 5 筆假健康資料到 `data/bronze/`
-- 建立 DuckDB，`COPY` 資料進 `raw_health_records`
-- 建立第一個 dbt model：`stg_health_records`
-- 用 Datasette 瀏覽驗證
+- `generate_health.py` 擴充為 100 人 × 90 天（9,000 筆），加入年齡族群分布與統計分布
+- `download_ltc.py` 下載衛福部長照機構 CSV，落地 `raw_ltc_facilities`
+- `load_bronze.py` 更新，支援兩份資料來源
