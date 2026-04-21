@@ -174,10 +174,12 @@ silverflow/
 **Input：** Branch 2 Silver models 就緒
 **Output：** 三個分析 Gold models，面試可展示的洞察
 **Success criteria：**
-- [ ] [GREEN] `gold_ltc_gap`：各縣市 65+ 人口 / 長照床位比例計算正確
-- [ ] [GREEN] `gold_health_weekly`：週平均 HRV、睡眠、步數、壓力計算正確
-- [ ] [GREEN] `gold_ltc_health_cross`：可找出「高壓力 + 低活動量 + 65+ + 長照資源不足縣市」的使用者
-- [ ] [REFACTOR] Gold models 加上 `description` 欄位（dbt schema.yml）
+- [x] [GREEN] `gold_ltc_gap`：各縣市 65+ 人口 / 長照床位比例計算正確
+- [x] [GREEN] `gold_health_weekly`：週平均 HRV、睡眠、步數、壓力計算正確
+- [x] [GREEN] `gold_ltc_health_cross`：可找出「高壓力 + 低活動量 + 65+ + 長照資源不足縣市」的使用者
+- [x] [REFACTOR] Gold models 加上 `description` 欄位（dbt schema.yml）
+
+> 備註：`gold_ltc_health_cross` 的縣市欄位以 `user_id mod 22` deterministic 分配（合成資料無地理欄位的已知限制）
 
 ---
 
@@ -205,11 +207,11 @@ silverflow/
 
 ## 當前狀態
 
-**最後更新：** 2026-04-21
-**目前進度：** Branch 2 完成 ✅，Branch 3 準備中
+**最後更新：** 2026-04-22
+**目前進度：** Branch 3 完成 ✅，Branch 4 準備中
 
 ### 下一步
-- Branch 3 Gold：`gold_ltc_gap.sql`（各縣市 65+ 人口 vs 長照床位缺口）
-- Branch 3 Gold：`gold_health_weekly.sql`（週平均健康趨勢）
-- Branch 3 Gold：`gold_ltc_health_cross.sql`（跨域關聯分析）
-- Gold models 加上 schema.yml descriptions
+- Branch 4：Datasette 可瀏覽所有 Bronze/Silver/Gold tables
+- Branch 4：Notebook 視覺化（長條圖、折線圖、散點圖）
+- Branch 4：統計檢定（t-test、相關性分析）
+- Branch 4：README 架構圖 + 面試故事

@@ -14,6 +14,7 @@ con = duckdb.connect(str(DB))
 sources = [
     ("raw_health_records", BRONZE / "health_records.csv"),
     ("raw_ltc_facilities", BRONZE / "ltc_facilities.csv"),
+    ("raw_population", BRONZE / "population.csv"),
 ]
 
 for table, csv_path in sources:
