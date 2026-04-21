@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_health_records
+    description: "清理後的健康紀錄，每位使用者完整 90 天，過濾異常值"
+    columns:
+      - name: user_id
+        description: "使用者 ID"
+        tests:
+          - not_null
+      - name: date
+        description: "紀錄日期"
+        tests:
+          - not_null
+      - name: user_group
+        description: "族群分類"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["senior", "midage", "healthy"]
+      - name: sleep_hrs
+        tests:
+          - not_null
+      - name: hrv
+        tests:
+          - not_null
+      - name: steps
+        tests:
+          - not_null
+      - name: stress
+        tests:
+          - not_null
+
+  - name: stg_ltc_facilities
+    description: "清理後的長照機構清單，統一縣市名稱、計算使用率"
+    columns:
+      - name: facility_id
+        description: "機構唯一 ID"
+        tests:
+          - not_null
+          - unique
+      - name: county
+        description: "縣市名稱"
+        tests:
+          - not_null
+      - name: facility_type
+        description: "機構類型"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["居家式", "社區式", "機構式"]
+      - name: approved_beds
+        tests:
+          - not_null
+      - name: occupancy_rate_pct
+        tests:
+          - not_null

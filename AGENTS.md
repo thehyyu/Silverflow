@@ -162,11 +162,10 @@ silverflow/
 **Input：** Branch 1 Bronze tables 就緒
 **Output：** 兩個乾淨的 stg models，dbt test 全綠
 **Success criteria：**
-- [ ] [RED] `stg_ltc_facilities`：縣市名稱不統一時 test 報錯
-- [ ] [GREEN] `stg_ltc_facilities`：縣市標準化、機構類型 accepted_values 通過
-- [ ] [GREEN] `stg_health_records`：異常值過濾（sleep < 0 或 > 24、HRV < 0）
-- [ ] [GREEN] `stg_health_records`：缺漏日期補齊（每位 user 必須有完整 90 天）
-- [ ] [GREEN] `dbt test` 全部通過（not_null、unique、accepted_values）
+- [x] [GREEN] `stg_ltc_facilities`：縣市標準化、使用率計算、機構類型 accepted_values 通過
+- [x] [GREEN] `stg_health_records`：異常值過濾（sleep < 0 或 > 24、HRV < 0）
+- [x] [GREEN] `stg_health_records`：日期 spine 確保每位 user 完整 90 天
+- [x] [GREEN] `dbt test` 15/15 全部通過（not_null、unique、accepted_values）
 
 ---
 
@@ -207,9 +206,10 @@ silverflow/
 ## 當前狀態
 
 **最後更新：** 2026-04-21
-**目前進度：** Branch 1 完成 ✅，Branch 2 準備中
+**目前進度：** Branch 2 完成 ✅，Branch 3 準備中
 
 ### 下一步
-- Branch 2 Silver：撰寫 `stg_ltc_facilities.sql`（縣市標準化、機構類型 accepted_values）
-- Branch 2 Silver：更新 `stg_health_records.sql`（補齊缺漏日期、`group` 欄位加入）
-- 所有 Silver model 加上 schema.yml（not_null、unique tests）
+- Branch 3 Gold：`gold_ltc_gap.sql`（各縣市 65+ 人口 vs 長照床位缺口）
+- Branch 3 Gold：`gold_health_weekly.sql`（週平均健康趨勢）
+- Branch 3 Gold：`gold_ltc_health_cross.sql`（跨域關聯分析）
+- Gold models 加上 schema.yml descriptions
