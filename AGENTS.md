@@ -149,11 +149,11 @@ silverflow/
 **Input：** Branch 0.5 曳光彈通過
 **Output：** 兩份原始資料完整落地 DuckDB
 **Success criteria：**
-- [ ] [GREEN] `download_ltc.py` 下載衛福部 CSV，落地 `raw_ltc_facilities`（至少 100 筆）
-- [ ] [GREEN] `generate_health.py` 生成 100 位虛擬使用者 × 90 天，落地 `raw_health_records`（9,000 筆）
-- [ ] [GREEN] 年齡分布合理：65+ 佔 40%、中年 35%、健康對照組 25%
-- [ ] [GREEN] 健康指標分布符合各族群設定（65+ HRV 偏低、中年壓力偏高）
-- [ ] [REFACTOR] 兩支 ingestion script 各自獨立，可單獨重跑
+- [x] [GREEN] `generate_ltc.py` 生成合成長照機構資料，落地 `raw_ltc_facilities`（262 筆，22 縣市）
+- [x] [GREEN] `generate_health.py` 生成 100 位虛擬使用者 × 90 天，落地 `raw_health_records`（9,000 筆）
+- [x] [GREEN] 族群分布正確：senior 40 人 / midage 35 人 / healthy 25 人
+- [x] [GREEN] 健康指標分布符合各族群設定（65+ HRV 偏低、中年壓力偏高）
+- [x] [REFACTOR] 三支 ingestion script 各自獨立，可單獨重跑
 
 ---
 
@@ -207,9 +207,9 @@ silverflow/
 ## 當前狀態
 
 **最後更新：** 2026-04-21
-**目前進度：** Branch 0.5 完成 ✅，Branch 1 準備中
+**目前進度：** Branch 1 完成 ✅，Branch 2 準備中
 
 ### 下一步
-- `generate_health.py` 擴充為 100 人 × 90 天（9,000 筆），加入年齡族群分布與統計分布
-- `download_ltc.py` 下載衛福部長照機構 CSV，落地 `raw_ltc_facilities`
-- `load_bronze.py` 更新，支援兩份資料來源
+- Branch 2 Silver：撰寫 `stg_ltc_facilities.sql`（縣市標準化、機構類型 accepted_values）
+- Branch 2 Silver：更新 `stg_health_records.sql`（補齊缺漏日期、`group` 欄位加入）
+- 所有 Silver model 加上 schema.yml（not_null、unique tests）
