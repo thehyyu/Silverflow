@@ -16,6 +16,8 @@
 | `dbt tests` — 資料品質測試 | 未開始 | 對標 Monte Carlo、Soda |
 | `Faker` — 合成資料生成 | 未開始 | 企業測試資料策略 |
 | `Datasette` — 輕量資料瀏覽 | 未開始 | 對標 Tableau / Power BI（輕量版） |
+| `scipy.stats` — 統計檢定 | 未開始 | t-test、相關性分析，DA/DS 基本功 |
+| `Matplotlib / Seaborn` — 視覺化 | 未開始 | 資料說故事，面試必備 |
 
 ---
 
