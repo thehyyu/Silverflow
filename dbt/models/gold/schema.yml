@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: gold_ltc_gap
+    description: "各縣市長照床位缺口分析：核准床位、已佔用、剩餘可用及使用率"
+    columns:
+      - name: county
+        description: "縣市名稱"
+        tests:
+          - not_null
+          - unique
+      - name: facility_count
+        description: "縣市內長照機構數"
+        tests:
+          - not_null
+      - name: total_approved_beds
+        description: "縣市核准總床位數"
+        tests:
+          - not_null
+      - name: available_beds
+        description: "剩餘可用床位數（核准 - 已佔用）"
+        tests:
+          - not_null
+      - name: avg_occupancy_rate_pct
+        description: "縣市平均床位使用率（%）"
+        tests:
+          - not_null
+      - name: senior_population_65plus
+        description: "縣市 65 歲以上人口數（2024 年，來源：內政部統計處）"
+        tests:
+          - not_null
+      - name: beds_per_1000_seniors
+        description: "每千位 65+ 人口的長照核准床位數，越低表示缺口越大"
+        tests:
+          - not_null
+
+  - name: gold_health_weekly
+    description: "每位使用者每週健康趨勢聚合：睡眠、HRV、步數、壓力週平均"
+    columns:
+      - name: user_id
+        description: "使用者 ID"
+        tests:
+          - not_null
+      - name: user_group
+        description: "族群分類（senior / midage / healthy）"
+        tests:
+          - not_null
+      - name: week_start
+        description: "該週起始日（週一）"
+        tests:
+          - not_null
+      - name: avg_hrv
+        description: "週平均 HRV"
+        tests:
+          - not_null
+      - name: avg_steps
+        description: "週平均步數"
+        tests:
+          - not_null
+      - name: avg_stress
+        description: "週平均壓力指數"
+        tests:
+          - not_null
+
+  - name: gold_ltc_health_cross
+    description: "65+ 使用者健康狀況與所在縣市長照資源交叉分析；縣市以 user_id mod 22 deterministic 分配（合成資料限制）"
+    columns:
+      - name: user_id
+        description: "65+ 使用者 ID"
+        tests:
+          - not_null
+          - unique
+      - name: county
+        description: "分配的縣市（deterministic synthetic assignment）"
+        tests:
+          - not_null
+      - name: avg_stress
+        description: "個人 90 天平均壓力指數"
+        tests:
+          - not_null
+      - name: avg_steps
+        description: "個人 90 天平均步數"
+        tests:
+          - not_null
+      - name: is_high_risk
+        description: "高風險旗標：壓力 ≥ 6 且步數 ≤ 3000 且縣市長照使用率 ≥ 70%"
+        tests:
+          - not_null
